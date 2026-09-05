@@ -41,7 +41,7 @@ flowchart LR
 - Optional OpenAI Responses API parsing with a deterministic fallback.
 - Real XRPL Testnet payment mode with transaction hash and explorer link.
 
-Frontend and backend ownership, acceptance checks, and the frozen response shapes are in [PARALLEL_WORKFLOWS.md](./PARALLEL_WORKFLOWS.md).
+The frozen API contract is in [PARALLEL_WORKFLOWS.md](./PARALLEL_WORKFLOWS.md). The remaining frontend and Testnet work is split for two independent Codex instances in [REMAINING_WORKFLOWS.md](./REMAINING_WORKFLOWS.md).
 
 ## Quick start: simulation mode
 
