@@ -2,7 +2,14 @@
 
 Goal: deliver a pitch-ready market-intelligence demo where a buyer agent refines a request, selects a data packet within budget, pays through x402 on XRPL, and receives the purchased data.
 
-The two workflows may run at the same time. **Do not edit files owned by the other workflow.** Coordinate only through the frozen API contract below.
+These workflows are designed to run concurrently in **two separate Codex instances** (two independent Codex tasks or sessions):
+
+- Codex instance A receives **Workflow A — Frontend**.
+- Codex instance B receives **Workflow B — Backend and XRPL**.
+
+Start both instances from the same `main` commit. Separate Git branches or Codex worktrees are recommended so each instance can commit independently. If both instances use the same checkout, their filesystem changes are immediately shared, so the ownership boundary below must be followed exactly.
+
+**Do not edit files owned by the other workflow.** The frozen API contract below is the only coordination point required while both Codex instances work.
 
 ## Ownership boundary
 
