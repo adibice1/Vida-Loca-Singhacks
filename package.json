@@ -1,0 +1,14 @@
+{
+  "name": "signalslice",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "express": "5.1.0",
+    "x402-xrpl": "0.3.2",
+    "xrpl": "5.1.0"
+  }
+}
