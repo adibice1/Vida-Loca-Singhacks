@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#081210">
+    <meta name="description" content="SignalSlice turns a market-intelligence objective into a budget-safe, licensed data packet paid through x402 on XRPL.">
+    <title>SignalSlice — Decision-ready market intelligence</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to request workspace</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SignalSlice home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Signal<span>Slice</span></span>
+      </a>
+      <div class="header-status">
+        <span class="connection" id="connectionStatus"><i aria-hidden="true"></i> Connecting</span>
+        <span class="mode-badge" id="modeBadge">Demo mode</span>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>Agent-native intelligence</span></p>
+          <h1 id="heroTitle">From a business question to <em>decision-ready data.</em></h1>
+          <p class="hero-lede">Scope the market, preview the signal, and unlock only the evidence your mandate allows—in one transparent flow.</p>
+          <a class="text-link" href="#workspace">Build an intelligence packet <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <aside class="hero-proof" aria-label="How SignalSlice works">
+          <div class="proof-topline">
+            <span>Objective → evidence</span>
+            <span>&lt; 2 min</span>
+          </div>
+          <ol class="proof-flow">
+            <li><span>01</span><div><strong>Define</strong><small>Describe the decision</small></div></li>
+            <li><span>02</span><div><strong>Scope</strong><small>Confirm market fit</small></div></li>
+            <li><span>03</span><div><strong>Settle</strong><small>Stay inside mandate</small></div></li>
+            <li><span>04</span><div><strong>Decide</strong><small>Use licensed signals</small></div></li>
+          </ol>
+          <p class="proof-note"><span aria-hidden="true">◆</span> No account or wallet details needed in this browser</p>
+        </aside>
+      </section>
+
+      <section class="demo-notice" id="demoNotice" aria-label="Payment mode notice">
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <div>
+          <strong>Transparent simulation</strong>
+          <span>Payments and ledger receipts are simulated locally. No real XRP moves and no transaction is written on-chain.</span>
+        </div>
+      </section>
+
+      <section class="workspace" id="workspace" aria-labelledby="workspaceTitle">
+        <div class="workspace-heading">
+          <div>
+            <p class="section-kicker">Live product walkthrough</p>
+            <h2 id="workspaceTitle">Build your signal packet</h2>
+          </div>
+          <button class="quiet-button" id="startOverButton" type="button" hidden>
+            <span aria-hidden="true">↻</span> Start over
+          </button>
+        </div>
+
+        <nav class="progress" aria-label="Request progress">
+          <ol>
+            <li class="is-current" data-step="1" aria-current="step"><span>1</span><b>Objective</b><small>Define the decision</small></li>
+            <li data-step="2"><span>2</span><b>Scope</b><small>Refine the search</small></li>
+            <li data-step="3"><span>3</span><b>Packet</b><small>Choose coverage</small></li>
+            <li data-step="4"><span>4</span><b>Delivery</b><small>Unlock evidence</small></li>
+          </ol>
+        </nav>
+
+        <div class="status-region" id="statusRegion" role="status" aria-live="polite" aria-atomic="true"></div>
+        <div class="error-banner" id="errorBanner" role="alert" hidden>
+          <span aria-hidden="true">!</span>
+          <div><strong>Something needs attention</strong><p id="errorMessage"></p></div>
+          <button type="button" id="dismissError" aria-label="Dismiss error">×</button>
+        </div>
+
+        <section class="journey-panel" id="objectivePanel" aria-labelledby="objectiveTitle">
+          <div class="panel-intro">
+            <span class="step-label">Step 1 of 4</span>
+            <h3 id="objectiveTitle">What decision are you trying to make?</h3>
+            <p>Describe the outcome in plain language. SignalSlice will ask only for details it cannot infer safely.</p>
+          </div>
+
+          <form id="objectiveForm" novalidate>
+            <div class="field-group field-group-wide">
+              <div class="field-heading">
+                <label for="objective">Market-intelligence objective</label>
+                <span id="objectiveCount">42 / 600</span>
+              </div>
+              <textarea id="objective" name="objective" rows="4" minlength="12" maxlength="600" required aria-describedby="objectiveHint">Find resilient suppliers for our expansion</textarea>
+              <p class="field-hint" id="objectiveHint">Include the decision or outcome—not search keywords.</p>
+            </div>
+
+            <div class="field-group">
+              <label for="budget">Agent spending mandate</label>
+              <div class="currency-input">
+                <span aria-hidden="true">◎</span>
+                <input id="budget" name="budgetDrops" type="number" inputmode="numeric" min="500" max="100000" step="1" value="3000" required aria-describedby="budgetHint">
+                <span>drops</span>
+              </div>
+              <p class="field-hint" id="budgetHint">Hard limit enforced before any payment attempt.</p>
+            </div>
+
+            <div class="form-action">
+              <div class="safety-note"><span aria-hidden="true">⌁</span><span>Your objective stays off-ledger.<br>No credentials enter this page.</span></div>
+              <button class="primary-button" id="objectiveSubmit" type="submit">
+                <span>Find matching intelligence</span><span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="journey-panel" id="scopePanel" aria-labelledby="scopeTitle" hidden>
+          <div class="panel-intro split-intro">
+            <div>
+              <span class="step-label">Step 2 of 4</span>
+              <h3 id="scopeTitle">A little context sharpens the signal.</h3>
+              <p id="scopeSummary">Confirm three details so the agent searches the right evidence.</p>
+            </div>
+            <span class="agent-chip"><i aria-hidden="true"></i> Agent clarification</span>
+          </div>
+
+          <form id="scopeForm">
+            <div class="scope-grid">
+              <div class="field-group">
+                <label for="sector">Sector</label>
+                <p class="question" id="sectorQuestion">Which market should I search?</p>
+                <select id="sector" name="sector" required>
+                  <option value="">Select a sector</option>
+                  <option value="semiconductors">Semiconductors</option>
+                  <option value="logistics">Logistics</option>
+                  <option value="renewables">Renewables</option>
+                  <option value="all">All sectors</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="region">Operating region</label>
+                <p class="question" id="regionQuestion">Which operating region matters?</p>
+                <select id="region" name="region" required>
+                  <option value="">Select a region</option>
+                  <option value="southeast-asia">Southeast Asia</option>
+                  <option value="asia-pacific">Asia Pacific</option>
+                  <option value="global">Global</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="freshness">Evidence freshness</label>
+                <p class="question">How recent should signals be?</p>
+                <select id="freshness" name="freshnessDays" required>
+                  <option value="30">Last 30 days</option>
+                  <option value="90" selected>Last 90 days</option>
+                  <option value="180">Last 180 days</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-action compact-action">
+              <button class="secondary-button" id="backToObjective" type="button"><span aria-hidden="true">←</span> Edit objective</button>
+              <button class="primary-button" id="scopeSubmit" type="submit"><span>Build my free preview</span><span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="journey-panel" id="packetPanel" aria-labelledby="packetTitle" hidden>
+          <div class="panel-intro split-intro">
+            <div>
+              <span class="step-label">Step 3 of 4</span>
+              <h3 id="packetTitle">Your market has signal.</h3>
+              <p id="understandingSummary">Review the free preview, then choose coverage within your mandate.</p>
+            </div>
+            <div class="scope-tags" id="scopeTags" aria-label="Confirmed scope"></div>
+          </div>
+
+          <div class="preview-block">
+            <div class="preview-heading">
+              <div><span class="free-badge">Free preview</span><h4>Coverage snapshot</h4></div>
+              <p>Metadata only. Named records unlock after settlement.</p>
+            </div>
+            <div class="metric-grid">
+              <div class="metric"><span>Matching companies</span><strong id="matchCount">—</strong><small>in scoped dataset</small></div>
+              <div class="metric"><span>Freshest signal</span><strong id="freshnessValue">—</strong><small>from collection</small></div>
+              <div class="metric metric-wide"><span>Included fields</span><div class="field-pills" id="fieldPills"></div></div>
+            </div>
+            <div class="redacted-sample">
+              <div><span class="sample-label">Redacted best match</span><strong id="sampleCompany">REDACTED</strong></div>
+              <dl id="sampleDetails"></dl>
+              <span class="locked-tag"><span aria-hidden="true">⌾</span> Unlock after settlement</span>
+            </div>
+          </div>
+
+          <form id="packetForm">
+            <fieldset>
+              <legend>Choose your intelligence packet</legend>
+              <p class="legend-hint">The agent recommends the richest coverage that fits your signed budget.</p>
+              <div class="packet-grid" id="packetOptions"></div>
+            </fieldset>
+            <div class="recommendation" id="recommendation"><span aria-hidden="true">✦</span><p id="rationale"></p></div>
+            <div class="purchase-bar">
+              <div><span>Selected packet</span><strong id="selectedSummary">—</strong></div>
+              <button class="primary-button" id="purchaseButton" type="submit"><span id="purchaseButtonText">Approve &amp; unlock</span><span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+        </section>
+
+        <section class="journey-panel settlement-panel" id="settlementPanel" aria-labelledby="settlementTitle" hidden>
+          <div class="panel-intro centered-intro">
+            <span class="step-label">Secure agent handoff</span>
+            <h3 id="settlementTitle">Turning mandate into evidence.</h3>
+            <p id="settlementSubtitle">Following the x402 flow in transparent simulation mode.</p>
+          </div>
+          <ol class="settlement-stages" id="settlementStages">
+            <li data-stage="policy"><span class="stage-icon">1</span><div><strong>Policy check</strong><small>Confirming quote and signed budget</small></div><b>Waiting</b></li>
+            <li data-stage="challenge"><span class="stage-icon">2</span><div><strong>x402 challenge</strong><small>Preparing an exact-price request</small></div><b>Waiting</b></li>
+            <li data-stage="settlement"><span class="stage-icon">3</span><div><strong>XRPL settlement</strong><small id="settlementStageCopy">Simulating the ledger handoff</small></div><b>Waiting</b></li>
+            <li data-stage="delivery"><span class="stage-icon">4</span><div><strong>Data delivery</strong><small>Verifying and unlocking the artifact</small></div><b>Waiting</b></li>
+          </ol>
+          <p class="settlement-footnote" id="settlementFootnote"><span aria-hidden="true">i</span> This walkthrough does not contact XRPL or move XRP.</p>
+        </section>
+
+        <section class="journey-panel delivery-panel" id="deliveryPanel" aria-labelledby="deliveryTitle" hidden>
+          <div class="delivery-hero">
+            <div class="success-mark" aria-hidden="true"><span>✓</span></div>
+            <div>
+              <span class="step-label">Delivery complete</span>
+              <h3 id="deliveryTitle">Evidence unlocked. Decision ready.</h3>
+              <p id="deliverySummary">Your licensed signal packet is ready for internal evaluation.</p>
+            </div>
+            <button class="secondary-button" id="newRequestButton" type="button">New request <span aria-hidden="true">↗</span></button>
+          </div>
+
+          <div class="receipt" aria-labelledby="receiptTitle">
+            <div class="receipt-heading">
+              <div><span class="receipt-icon" aria-hidden="true">◎</span><div><small id="receiptType">Simulation receipt</small><h4 id="receiptTitle">Payment &amp; provenance</h4></div></div>
+              <span class="verified-badge" id="verifiedBadge">Simulation verified</span>
+            </div>
+            <dl class="receipt-grid">
+              <div><dt>Amount</dt><dd id="receiptAmount">—</dd></div>
+              <div><dt>Packet ID</dt><dd id="receiptPacket">—</dd></div>
+              <div><dt id="transactionLabel">Simulation hash</dt><dd><span class="mono-value" id="receiptTransaction">—</span><a id="explorerLink" href="#" target="_blank" rel="noopener noreferrer" hidden>View on XRPL Explorer <span aria-hidden="true">↗</span></a></dd></div>
+              <div><dt>Artifact SHA-256</dt><dd class="mono-value" id="receiptArtifact">—</dd></div>
+              <div><dt>Source</dt><dd id="receiptSource">—</dd></div>
+              <div><dt>Licence</dt><dd id="receiptLicense">—</dd></div>
+            </dl>
+            <p class="simulation-warning" id="simulationWarning"><span aria-hidden="true">i</span> This is a local simulation receipt—not a real XRPL transaction or explorer record.</p>
+          </div>
+
+          <div class="records-heading">
+            <div><p class="section-kicker">Purchased intelligence</p><h4 id="recordsTitle">Delivered records</h4></div>
+            <span id="generatedAt">Generated —</span>
+          </div>
+          <div class="records-grid" id="recordsGrid"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Signal<span>Slice</span></span></div>
+      <p>Decision intelligence for autonomous commerce.</p>
+      <p>Built for transparent x402 settlement on XRPL.</p>
+    </footer>
+  </body>
+</html>
